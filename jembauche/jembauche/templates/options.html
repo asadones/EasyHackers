@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row well">
+  <div class="col-lg-6">
+    <legend>Je recherche ...</legend>
+    <h2 style="color:#ff6508" class="text-center">{{ job.title }} - {{ job.contract }}</h2>
+    <h4 class="text-center">&Agrave; {{ job.location_city }} ({{ job.location_province}})</h4>
+  </div>
+  <div class="col-lg-6">
+  </div>
+</div>
+{% endblock %}

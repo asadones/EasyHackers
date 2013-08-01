@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load url from future %}
 
 {% block content %}
 <div class="row">
   <div class="col-lg-6 well">
-    <form id="offerForm" method="post" class="form-horizontal">
+      <form id="offerForm" method="post" class="form-horizontal" action="{% url 'options' %}">
       {% csrf_token %}
       <fieldset>
         <legend>Je recherche ...</legend>
