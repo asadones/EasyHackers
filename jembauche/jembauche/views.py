@@ -112,3 +112,25 @@ class FinalizeView(TemplateView):
         job.state = 1
         job.save()
         return self.render_to_response(context)
+
+
+class EndView(TemplateView):
+
+    template_name = 'end.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(JobView, self).get_context_data()
+        job = Job.objects.get(pk=kwargs['job_id'])
+        context['job'] = job
+        return context
+
+
+class JobView(TemplateView):
+
+    template_name = 'view.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(JobView, self).get_context_data()
+        job = Job.objects.get(pk=kwargs['job_id'])
+        context['job'] = job
+        return context

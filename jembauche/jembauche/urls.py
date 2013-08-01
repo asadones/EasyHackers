@@ -20,4 +20,6 @@ urlpatterns = patterns('',
     url(r'^$', HomepageView.as_view(), name='home'),
     url(r'^options/$', OptionsView.as_view(), name='options'),
     url(r'^publish/(?P<job_id>\d+)/$', FinalizeView.as_view(), name='finalize'),
+    url(r'^confirm/(?P<job_id>\d+)/$', EndView.as_view(), name='end'),
+    url(r'^view/(?P<job_id>\d+)/$', JobView.as_view(), name='view'),
 )

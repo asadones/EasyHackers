@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row-narrow well">
+    <h3>{{ job.title }}</h3>
+    <ul>
+        <li><strong>Type de contrat :</strong> {{ job.contract }}</li>
+        <li><strong>Localisation :</strong> {{ job.location_city }} ({{ job.location_province }})</li>
+        <li><strong>Contact :</strong> {{ job.contact_givenname }} {{ job.contact_lastname }}, <a href="mailto:{{ job.email }}">{{ job.email }}</a></li>
+    </ul>
+    <p>{{ job.description }}</p>
+</div>
+{% endblock %}
