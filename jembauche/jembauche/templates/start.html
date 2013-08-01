@@ -7,19 +7,20 @@
       {% csrf_token %}
       <fieldset>
         <legend>Je recherche ...</legend>
-          <div class="form-group col-lg-8">
-              <label for="{{ offer_form.name_company.id }}">{{ offer_form.name_company.label }}*</label>
+        <div class="form-group col-lg-8 {% if offer_form.name_company.errors %}has-error{% endif %}">
+              <label for="{{ offer_form.name_company.id }}" class="control-label">{{ offer_form.name_company.label }}*</label>
               {{ offer_form.name_company }}
+              {% if offer_form.name_company.errors %}<span class="help-block">{{ offer_form.name_company.errors }}</span>{% endif %}
           </div>
           <div class="form-group col-lg-8">
               <label for="{{ offer_form.localisation.id }}">{{ offer_form.localisation.label }}*</label>
               {{ offer_form.localisation }}
           </div>
-          <div class="form-group col-lg-6" style="margin-right: 1px;">
+          <div class="form-group col-lg-6">
               <label for="{{ offer_form.function.id }}">{{ offer_form.function.label }}*</label>
               {{ offer_form.function }}
           </div>
-          <div class="form-group col-lg-6" style="margin-left: 2px;">
+          <div class="form-group col-lg-6" style="margin-left: 15px;">
               <label for="{{ offer_form.industry.id }}">{{ offer_form.industry.label }}*</label>
               {{ offer_form.industry }}
           </div>
@@ -35,6 +36,10 @@
             <button type="submit" class="btn btn-default">Publier</button>
           </div>
       </fieldset>
+      {{ offer_form.localisation_code }}
+      {{ offer_form.localisation_city }}
+      {{ offer_form.localisation_province }}
+      {{ offer_form.localisation_country }}
     </form>
   </div>
   <div class="col-lg-6">
@@ -68,8 +73,12 @@
 </style>
 <script type="text/javascript">
 
-  $(function() {
-    function log( message ) {
+$(function() {
+    function register(data) {
+        $('#id_localisation_country').val(data.country);
+        $('#id_localisation_code').val(data.code);
+        $('#id_localisation_province').val(data.province);
+        $('#id_localisation_city').val(data.city);
     }
 
     $( "#id_localisation" ).autocomplete({
@@ -87,10 +96,13 @@
           },
           success: function( data ) {
             response( $.map( data.geonames, function( item ) {
-              console.log(item);
               return {
                 label: item.name + (item.adminName1 ? ", " + item.adminName1 : ""),
-                value: item.name +  " (" + item.adminCode2 + ")"
+                value: item.name,
+                code: item.geonameId,
+                country: item.countryCode,
+                province: item.adminCode2,
+                city: item.name
               }
             }));
           }
@@ -98,9 +110,7 @@
       },
       minLength: 2,
       select: function( event, ui ) {
-        log( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
+        register(ui.item);
       },
       open: function() {
         $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
