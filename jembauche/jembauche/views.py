@@ -11,6 +11,8 @@ class HomepageView(TemplateView):
         context = super(HomepageView, self).get_context_data()
         if self.request.method == 'POST':
             context['offer_form'] = OfferForm(self.request.POST)
+            context['contact_form'] = ContactForm(initial=self.request.POST)
+            context['offer_data'] = self.request.POST
         else:
             context['offer_form'] = OfferForm()
         return context
@@ -21,5 +23,7 @@ class HomepageView(TemplateView):
 
     def post(self, *args, **kwargs):
         context = self.get_context_data(*args, **kwargs)
+        if (context['offer_form'].is_valid()):
+            self.template_name = 'finalize.html'
         return self.render_to_response(context)
 

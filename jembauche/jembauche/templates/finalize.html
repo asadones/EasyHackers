@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row well">
+  <div class="col-lg-4">
+    <legend>Je recherche ...</legend>
+    <h2 style="color:#ff6508" class="text-center">{{ offer_data.title }} - {{ offer_data.contract }}</h2>
+    <h4 class="text-center">&Agrave; {{ offer_data.localisation_city }} ({{ offer_data.localisation_province}})</h4>
+  </div>
+  <div class="col-lg-8">
+    <form class="form-horizontal">
+       <legend>Je suis ...</legend>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.name_company.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.name_company.id }}" class="control-label">{{ contact_form.name_company.label }}*</label>
+           {{ contact_form.name_company }}
+           {% if contact_form.name_company.errors %}<span class="help-block">{{ contact_form.name_company.errors }}</span>{% endif %}
+         </div>
+       </div>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.num_employees.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.num_employees.id }}" class="control-label">{{ contact_form.num_employees.label }}*</label>
+           {{ contact_form.num_employees }}
+           {% if contact_form.num_employees.errors %}<span class="help-block">{{ contact_form.num_employees.errors }}</span>{% endif %}
+         </div>
+       </div>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.givenname_contact.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.givenname_contact.id }}" class="control-label">{{ contact_form.givenname_contact.label }}*</label>
+           {{ contact_form.givenname_contact }}
+           {% if contact_form.givenname_contact.errors %}<span class="help-block">{{ contact_form.givenname_contact.errors }}</span>{% endif %}
+         </div>
+       </div>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.lastname_contact.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.lastname_contact.id }}" class="control-label">{{ contact_form.lastname_contact.label }}*</label>
+           {{ contact_form.lastname_contact }}
+           {% if contact_form.lastname_contact.errors %}<span class="help-block">{{ contact_form.lastname_contact.errors }}</span>{% endif %}
+         </div>
+       </div>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.email.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.email.id }}" class="control-label">{{ contact_form.email.label }}*</label>
+           {{ contact_form.email }}
+           {% if contact_form.email.errors %}<span class="help-block">{{ contact_form.email.errors }}</span>{% endif %}
+         </div>
+       </div>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.confirm_email.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.confirm_email.id }}" class="control-label">{{ contact_form.confirm_email.label }}*</label>
+           {{ contact_form.confirm_email }}
+           {% if contact_form.confirm_email.errors %}<span class="help-block">{{ contact_form.confirm_email.errors }}</span>{% endif %}
+         </div>
+       </div>
+       <div class="col-lg-6">
+         <div class="form-group col-lg-11 {% if contact_form.phone_contact.errors %}has-error{% endif %}">
+           <label for="{{ contact_form.phone_contact.id }}" class="control-label">{{ contact_form.phone_contact.label }}*</label>
+           {{ contact_form.phone_contact }}
+           {% if contact_form.phone_contact.errors %}<span class="help-block">{{ contact_form.phone_contact.errors }}</span>{% endif %}
+         </div>
+       </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

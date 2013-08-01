@@ -8,33 +8,37 @@
       <fieldset>
         <legend>Je recherche ...</legend>
         <div class="form-group col-lg-8 {% if offer_form.name_company.errors %}has-error{% endif %}">
-              <label for="{{ offer_form.name_company.id }}" class="control-label">{{ offer_form.name_company.label }}*</label>
-              {{ offer_form.name_company }}
-              {% if offer_form.name_company.errors %}<span class="help-block">{{ offer_form.name_company.errors }}</span>{% endif %}
-          </div>
-          <div class="form-group col-lg-8">
-              <label for="{{ offer_form.localisation.id }}">{{ offer_form.localisation.label }}*</label>
-              {{ offer_form.localisation }}
-          </div>
-          <div class="form-group col-lg-6">
-              <label for="{{ offer_form.function.id }}">{{ offer_form.function.label }}*</label>
-              {{ offer_form.function }}
-          </div>
-          <div class="form-group col-lg-6" style="margin-left: 15px;">
-              <label for="{{ offer_form.industry.id }}">{{ offer_form.industry.label }}*</label>
-              {{ offer_form.industry }}
-          </div>
-          <div class="form-group col-lg-12">
-              <label for="{{ offer_form.title.id }}">{{ offer_form.title.label }}*</label>
-              {{ offer_form.title }}
-          </div>
-          <div class="form-group col-lg-12">
-              <label for="{{ offer_form.description.id }}">{{ offer_form.description.label }}*</label>
-              {{ offer_form.description }}
-          </div>
-          <div class="form-group col-lg-12">
-            <button type="submit" class="btn btn-default">Publier</button>
-          </div>
+            <label for="{{ offer_form.name_company.id }}" class="control-label">{{ offer_form.name_company.label }}*</label>
+            {{ offer_form.name_company }}
+            {% if offer_form.name_company.errors %}<span class="help-block">{{ offer_form.name_company.errors }}</span>{% endif %}
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="{{ offer_form.localisation.id }}">{{ offer_form.localisation.label }}*</label>
+            {{ offer_form.localisation }}
+        </div>
+        <div class="form-group col-lg-6" style="margin-left: 15px;">
+            <label for="{{ offer_form.contract.id }}">{{ offer_form.contract.label }}*</label>
+            {{ offer_form.contract }}
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="{{ offer_form.function.id }}">{{ offer_form.function.label }}*</label>
+            {{ offer_form.function }}
+        </div>
+        <div class="form-group col-lg-6" style="margin-left: 15px;">
+            <label for="{{ offer_form.industry.id }}">{{ offer_form.industry.label }}*</label>
+            {{ offer_form.industry }}
+        </div>
+        <div class="form-group col-lg-12">
+            <label for="{{ offer_form.title.id }}">{{ offer_form.title.label }}*</label>
+            {{ offer_form.title }}
+        </div>
+        <div class="form-group col-lg-12">
+            <label for="{{ offer_form.description.id }}">{{ offer_form.description.label }}*</label>
+            {{ offer_form.description }}
+        </div>
+        <div class="form-group col-lg-12">
+          <button type="submit" class="btn btn-default">Publier</button>
+        </div>
       </fieldset>
       {{ offer_form.localisation_code }}
       {{ offer_form.localisation_city }}

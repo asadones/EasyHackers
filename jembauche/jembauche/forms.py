@@ -327,19 +327,22 @@ class OfferForm(forms.Form):
         )),
     )
 
+    _contracts = (
+        ('CDI', 'CDI'),
+        ('CDD', 'CDD'),
+        ('Stage', 'Stage'),
+        ('Alternance', 'Alternance/Apprentissage'),
+        ('Freelance', 'Freelance'),
+    )
+
     name_company = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Nom de l\'entreprise',
     )
     localisation = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        label=u'Localisation de l\'offre',
-    )
-    localisation = forms.CharField(
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Localisation de l\'offre',
     )
     localisation_code = forms.CharField(
@@ -358,21 +361,27 @@ class OfferForm(forms.Form):
         required=True,
         widget=forms.HiddenInput(),
     )
+    contract = forms.ChoiceField(
+        choices=_contracts,
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control input-small'}),
+        label=u'Type de contrat',
+    )
     industry = forms.ChoiceField(
         choices=_job_sectors,
         required=True,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': 'form-control input-small'}),
         label=u'Secteur d\'activité',
     )
     function = forms.ChoiceField(
         choices=_job_functions,
         required=True,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': 'form-control input-small'}),
         label=u'Poste de l\'offre',
     )
     title = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Titre de l\'offre',
     )
     description = forms.CharField(
@@ -395,33 +404,38 @@ class ContactForm(forms.Form):
 
     name_company = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Nom de l\'entreprise',
     )
-    num_employee = forms.ChoiceField(
+    num_employees = forms.ChoiceField(
         choices=_employee_choices,
         required=True,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': 'form-control input-small'}),
         label=u'Nombre d\'employés',
     )
-    nom_contact = forms.CharField(
+    lastname_contact = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Nom',
     )
-    prenom_contact = forms.CharField(
+    givenname_contact = forms.CharField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Prénom',
     )
     phone_contact = forms.RegexField(
         regex=_phone_re,
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label='Numéro de téléphone',
     )
     email = forms.EmailField(
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Email',
+    )
+    confirm_email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
+        label=u'Confirmer l\'Email',
     )
