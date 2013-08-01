@@ -337,6 +337,27 @@ class OfferForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         label=u'Localisation de l\'offre',
     )
+    localisation = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        label=u'Localisation de l\'offre',
+    )
+    localisation_code = forms.CharField(
+        required=True,
+        widget=forms.HiddenInput(),
+    )
+    localisation_city = forms.CharField(
+        required=True,
+        widget=forms.HiddenInput(),
+    )
+    localisation_province = forms.CharField(
+        required=True,
+        widget=forms.HiddenInput(),
+    )
+    localisation_country = forms.CharField(
+        required=True,
+        widget=forms.HiddenInput(),
+    )
     industry = forms.ChoiceField(
         choices=_job_sectors,
         required=True,
