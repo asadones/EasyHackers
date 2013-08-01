@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from forms import OfferForm
+from forms import OfferForm, ContactForm
 
 
 class HomepageView(TemplateView):
@@ -9,7 +9,8 @@ class HomepageView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomepageView, self).get_context_data()
-        context['form'] = OfferForm()
+        context['contact_form'] = ContactForm()
+        context['offer_form'] = OfferForm()
         return context
 
     def get(self, *args, **kwargs):

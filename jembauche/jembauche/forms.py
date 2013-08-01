@@ -11,7 +11,6 @@ class OfferForm(forms.Form):
         (u'4', u'100 à 249'),
         (u'5', u'plus de 250'),
     )
-    _phone_re = r'^0[1-6]{1}(([0-9]{2}){4})|((\s[0-9]{2}){4})|((-[0-9]{2}){4})$'
 
     title = forms.CharField(
         required=True,
@@ -39,12 +38,11 @@ class OfferForm(forms.Form):
         widget=forms.Textarea(attrs={'class': 'form-control'}),
         label=u'Description de l\'offre',
     )
-    email = forms.EmailField(
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        label=u'Email',
-    )
 
+
+class ContactForm(forms.Form):
+
+    _phone_re = r'^0[1-6]{1}(([0-9]{2}){4})|((\s[0-9]{2}){4})|((-[0-9]{2}){4})$'
     nom_contact = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
@@ -60,4 +58,9 @@ class OfferForm(forms.Form):
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         label='Numéro de téléphone',
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        label=u'Email',
     )
