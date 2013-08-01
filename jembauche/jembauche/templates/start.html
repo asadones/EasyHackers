@@ -6,7 +6,7 @@
     <form id="offerForm" method="post">
       <fieldset>
         <legend>Je recherche ...</legend>
-        {% for field in form %}
+        {% for field in offer_form %}
           <div class="form-group">
             <label for="{{ field.id }}">{{ field.label }}</label>
             {{ field }}
