@@ -91,7 +91,7 @@ class FinalizeView(TemplateView):
                 try:
                     job_option = JobOptions.objects.get(job_id=job.id, option_data=key)
                     job_option.delete()
-                except JobOptions.DoesNotExists:
+                except JobOptions.DoesNotExist:
                     pass
                 options[key] = False
 
