@@ -13,7 +13,7 @@
               {{ offer_form.name_company }}
               {% if offer_form.name_company.errors %}<span class="help-block">{{ offer_form.name_company.errors }}</span>{% endif %}
           </div>
-          <div class="form-group col-lg-8 {% if offer_form.localisation.errors %}has-error{% endif %}">
+          <div class="form-group col-lg-6 {% if offer_form.localisation.errors %}has-error{% endif %}">
               <label for="{{ offer_form.localisation.id }}" class="control-label">{{ offer_form.localisation.label }}*</label>
               {{ offer_form.localisation }}
               {% if offer_form.localisation.errors %}<span class="help-block">{{ offer_form.localisation.errors }}</span>{% endif %}
@@ -58,55 +58,91 @@
       <img src="{{ STATIC_URL }}logo_black_border.png" height="70px" class="img-thumbnail"/>
     </p>
     <br/>
-    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;TPE et PME</h4>
-    <p>
-     Vous aussi accédez à des outils de recrutement de qualité.
-    </p>
+    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;TPE et PME : accédez à des outils de recrutement de qualité</h4>
     <br/>
     <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Diffusez en un clic sur plus de dix sites de recrutement</h4>
-    <p>
-      <table class="table table-striped">
+    <div class="row well">
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/leboncoin_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/vivastreet_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/indeed_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/trovit_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/jobrapido_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/simply_hired_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/ruedelemploi_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/olx_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/yakaz_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/pole_emploi_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/keljob_std.png" height="30px">
+     </div>
+     <div class="col-lg-3">
+       <img src="{{ STATIC_URL }}jobboard_logos/regions_job_std.png" height="30px">
+     </div>
+    </div>
+    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Trouvez des candidats et gagnez en visibilité grâce aux réseaux sociaux</h4>
+       <table class="table">
         <tbody>
           <tr>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/le_bon_coin.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/vivastreet.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/indeed.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/trovit.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/jobrapido.jpg" height="20px"> </a>
-          </tr>
-          </tr>
-          <tr>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/simply_hired.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/rue_de_lemploi.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/olx.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/yakaz.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/pole_emploi.jpg" height="20px"> </a>
-          </tr>
-          <tr>
-          <tr>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/monster.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/keljob.jpg" height="20px"> </a>
-              <td> <a href ="http://www.leboncoin.fr/"> <img src="{{ STATIC_URL }}jobboards_logos/regions_job.jpg" height="20px"> </a>
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}network_logos/facebook_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}network_logos/twitter_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}network_logos/viadeo_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}network_logos/linkedin_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}network_logos/googleplus_std.png" height="30px">
           </tr>
         </tbody>
-      </table>
-    </p>
-    <br/>
-    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Trouvez des candidats et gagnez en visibilité grâce aux réseaux sociaux</h4>
-    <p>
-     Insert logos.
+       </table>
     </p>
     <br/>
     <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Recrutez sur les écoles qui vous correspondent autour de chez vous</h4>
     <br/>
     <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Ils nous soutiennent !</h4>
     <p>
-     Insert logos.
-     </p>
+       <table class="table">
+        <tbody>
+          <tr>
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}support_logos/pole_emploi_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}support_logos/medef_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}support_logos/cgpme_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}support_logos/andrh_std.png" height="30px">
+    <div class="col-lg-3">
+              <td> <img src="{{ STATIC_URL }}support_logos/cci_std.png" height="30px">
+          </tr>
+        </tbody>
+    </table> 
+    </p>
      <br/>
      <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Besoin d'aide pour un recrutement de qualité ? Nos conseillers sont à votre écoute :</h4>
-     <p>
-     Insert logos.
+    <p class="text-center">
+      <td> <img src="{{ STATIC_URL }}support_phone.jpg" height="45px">
      </p>
  </div>
 </div>
