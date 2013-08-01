@@ -8,7 +8,8 @@
     <link href="{{STATIC_URL}}css/bootstrap-glyphicons.css" rel="stylesheet">
     <style>
       body {
-        padding-top: 60px;
+          padding-top: 60px;
+          padding-bottom: 170px;
       }
       .starter-template {
         padding: 40px 15px;
@@ -38,9 +39,18 @@
       {% block content %}
         Your content in here !
       {% endblock %}
-      <div class="footer">
-        <p>&copy; EasyHackers 2013</p>
-      </div>
+
+      <div class="navbar navbar-fixed-bottom">
+        <p class="navbar-text text-center">
+         <img src="{{ STATIC_URL }}logo_black_border.png" height="20px" / >
+          est un service édité par 
+         <a href="http://www.multiposting.fr/fr">
+          <img src="http://files.multiposting.fr/static/images/logos/multiposting/multiposting-logo-s.jpg" height="20px">
+         </a>
+         <br/>
+         Leader européen des solutions en ligne de recrutement
+        </p>
+     </div>
     </div>
 
     <!-- JavaScript plugins (requires jQuery) -->
