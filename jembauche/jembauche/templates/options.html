@@ -40,23 +40,164 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+
+function updatePrice () {
+    var price = 10;
+    if ($('#pe_bt').hasClass('active')) {
+        price += 10;
+    }
+    if ($('#schools_bt').hasClass('active')) {
+        price += 10;
+    }
+    if ($('#monster_bt').hasClass('active')) {
+        price += 99;
+    }
+    if ($('#keljob_bt').hasClass('active')) {
+        price += 99;
+    }
+    if ($('#rjobs_bt').hasClass('active')) {
+        price += 99;
+    }
+    $('#price').text(price);
+    $('#id_price').value(price);
+}
+
+function togglePE() {
+    $('#pe_bt').button('toggle');
+    if ($('#pe_bt').hasClass('active')) {
+        $('#pe_bt').removeClass('btn-default').addClass('btn-success');
+        $('#pe_bt').text('Activé');
+        $('#pe_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+        $('#pe').show();
+        $('#id_pe').val('1');
+    } else {
+        $('#pe_bt').removeClass('btn-success').addClass('btn-default');
+        $('#pe_bt').text('Désactivé');
+        $('#pe_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        $('#pe').hide();
+        $('#id_pe').val('0');
+    }
+    updatePrice();
+}
+
+function toggleSchools() {
+    $('#schools_bt').button('toggle');
+    if ($('#schools_bt').hasClass('active')) {
+        $('#schools_bt').removeClass('btn-default').addClass('btn-success');
+        $('#schools_bt').text('Activé');
+        $('#schools_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+        $('#schools').show();
+        $('#id_schools').val('1');
+    } else {
+        $('#schools_bt').removeClass('btn-success').addClass('btn-default');
+        $('#schools_bt').text('Désactivé');
+        $('#schools_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        $('#schools').hide();
+        $('#id_schools').val('0');
+    }
+    updatePrice();
+}
+
+function toggleMonster() {
+    $('#monster_bt').button('toggle');
+    if ($('#monster_bt').hasClass('active')) {
+        $('#monster_bt').removeClass('btn-default').addClass('btn-success');
+        $('#monster_bt').text('Activé');
+        $('#monster_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+        $('#monster').show();
+        $('#id_monster').val('1');
+    } else {
+        $('#monster_bt').removeClass('btn-success').addClass('btn-default');
+        $('#monster_bt').text('Désactivé');
+        $('#monster_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        $('#monster').hide();
+        $('#id_monster').val('0');
+    }
+    updatePrice();
+}
+
+function toggleKeljob() {
+    $('#keljob_bt').button('toggle');
+    if ($('#keljob_bt').hasClass('active')) {
+        $('#keljob_bt').removeClass('btn-default').addClass('btn-success');
+        $('#keljob_bt').text('Activé');
+        $('#keljob_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+        $('#keljob').show();
+        $('#id_keljob').val('1');
+    } else {
+        $('#keljob_bt').removeClass('btn-success').addClass('btn-default');
+        $('#keljob_bt').text('Désactivé');
+        $('#keljob_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        $('#keljob').hide();
+        $('#id_keljob').val('0');
+    }
+    updatePrice();
+}
+
+function toggleRJobs() {
+    $('#rjobs_bt').button('toggle');
+    if ($('#rjobs_bt').hasClass('active')) {
+        $('#rjobs_bt').removeClass('btn-default').addClass('btn-success');
+        $('#rjobs_bt').text('Activé');
+        $('#rjobs_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+        $('#rjobs').show();
+        $('#id_rjobs').val('1');
+    } else {
+        $('#rjobs_bt').removeClass('btn-success').addClass('btn-default');
+        $('#rjobs_bt').text('Désactivé');
+        $('#rjobs_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        $('#rjobs').hide();
+        $('#id_rjobs').val('0');
+    }
+    updatePrice();
+}
+</script>
+<form action="{% url finalize job_id=job.id %}" method="post">
 <div class="row">
   <div class="col-lg-6">
     <div class="col-lg-12" style="border: 1px solid #e3e3e3; margin-bottom: 5px">
       <h3>Diffuser sur P&ocirc;le Emploi<span class="pull-right" style="color:#ff6508"><strong>10€</strong></span></h3>
+      <button onclick="togglePE();" type="button" class="btn btn-default" id="pe_bt" style="margin-bottom: 10px;">D&eacute;sactiv&eacute;</button>&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" id="pe_icon"></span>
     </div>
-    <div class="col-lg-12" style="border: 1px solid #e3e3e3;">
+    <div class="col-lg-12" style="border: 1px solid #e3e3e3; margin-bottom: 5px">
       <h3>Diffuser sur les &eacute;coles<span class="pull-right" style="color:#ff6508"><strong>10€</strong></span></h3>
-      <p>Cette option d&eacute;clenchera la diffusion de votre offre d'emploi vers les &eacute;coles susceptible d'&ecirc;tre int&eacute;ress&eacute;es par votre offre dans les enfirons de <strong>{{ job.location_city }}</strong>.</p>
+      <p>Cette option d&eacute;clenchera la diffusion de votre offre d'emploi vers les &eacute;coles susceptible d'&ecirc;tre int&eacute;ress&eacute;es par votre offre dans les environs de <strong>{{ job.location_city }}</strong>.</p>
+      <button onclick="toggleSchools();" type="button" class="btn btn-default" id="schools_bt" style="margin-bottom: 10px;">D&eacute;sactiv&eacute;</button>&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" id="schools_icon"></span>
+    </div>
+    <div class="col-lg-12" style="border: 1px solid #e3e3e3; margin-bottom: 5px">
+      <h3>Diffuser sur Monster<span class="pull-right" style="color:#ff6508"><strong>99€</strong></span></h3>
+      <button onclick="toggleMonster();" type="button" class="btn btn-default" id="monster_bt" style="margin-bottom: 10px;">D&eacute;sactiv&eacute;</button>&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" id="mopnster_icon"></span>
+    </div>
+    <div class="col-lg-12" style="border: 1px solid #e3e3e3; margin-bottom: 5px">
+      <h3>Diffuser sur Keljob<span class="pull-right" style="color:#ff6508"><strong>99€</strong></span></h3>
+      <button onclick="toggleKeljob();" type="button" class="btn btn-default" id="keljob_bt" style="margin-bottom: 10px;">D&eacute;sactiv&eacute;</button>&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" id="keljob_icon"></span>
+    </div>
+    <div class="col-lg-12" style="border: 1px solid #e3e3e3; margin-bottom: 5px">
+      <h3>Diffuser sur R&eacutegion Jobs<span class="pull-right" style="color:#ff6508"><strong>99€</strong></span></h3>
+      <button onclick="toggleRJobs();" type="button" class="btn btn-default" id="rjobs_bt" style="margin-bottom: 10px;">D&eacute;sactiv&eacute;</button>&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" id="rjobs_icon"></span>
     </div>
   </div>
-  <div class="col-lg-6">
-    <h2>Mon annonce pour <span id="price"></span>€</h2>
+  <div id="command" class="col-lg-6">
+    <h2>Mon annonce pour <span id="price" style="color:#ff6508">10</span> €</h2>
     <ul>
         <li>Diffusion standard sur les sites gratuits</li>
         <li id="schools" style="display: none;">Diffusion sur les &eacute;coles proches de {{ job.location_city }}</li>
-        <li id="pe" style="display: none;">Diffusion sur mon compte P&ocirc;le emploi</li>
+        <li id="pe" style="display: none;">Diffusion sur P&ocirc;le Emploi</li>
+        <li id="monster" style="display: none;">Diffusion sur Monster</li>
+        <li id="keljob" style="display: none;">Diffusion sur Keljob </li>
+        <li id="rjobs" style="display: none;">Diffusion sur R&eacute;gion Jobs</li>
     </ul>
+      <input type="hidden" id="id_schools" name="schools" value="0"/>
+      <input type="hidden" id="id_pe" name="pe" value="0"/>
+      <input type="hidden" id="id_monster" name="monster" value="0"/>
+      <input type="hidden" id="id_keljob" name="keljob" value="0"/>
+      <input type="hidden" id="id_rjobs" name="rjobs" value="0"/>
+      <button type="submit" class="btn btn-default pull-right">Publier</button>
   </div>
 </div>
+{% csrf_token %}
+</form>
+{% endblock %}
+{% block extrafooter %}
 {% endblock %}

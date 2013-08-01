@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomepageView.as_view(), name='home'),
     url(r'^options/$', OptionsView.as_view(), name='options'),
+    url(r'^publish/(?P<job_id>\d+)/$', FinalizeView.as_view(), name='finalize'),
 )
