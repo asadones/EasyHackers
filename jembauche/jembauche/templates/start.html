@@ -3,11 +3,16 @@
 {% block content %}
 <div class="row">
   <div class="col-lg-6 well">
-      <h2>Je recherche ...</h2>
       <form id="offerForm" method="post">
-        <table class="table">
-          {{ form.as_table }}
-        </table>
+        <fieldset>
+          <legend>Je recherche ...</legend>
+          {% for field in form %}
+            <div class="form-group">
+              <label for="{{ field.id }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+          {% endfor %}
+        </fieldset>
       </form>
   </div>
   <div class="col-lg-6">
