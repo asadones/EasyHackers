@@ -3,15 +3,37 @@
 {% block content %}
 <div class="row">
   <div class="col-lg-6 well">
-    <form id="offerForm" method="post">
+    <form id="offerForm" method="post" class="form-horizontal">
+      {% csrf_token %}
       <fieldset>
         <legend>Je recherche ...</legend>
-        {% for field in offer_form %}
-          <div class="form-group">
-            <label for="{{ field.id }}">{{ field.label }}</label>
-            {{ field }}
+          <div class="form-group col-lg-8">
+              <label for="{{ offer_form.name_company.id }}">{{ offer_form.name_company.label }}*</label>
+              {{ offer_form.name_company }}
           </div>
-        {% endfor %}
+          <div class="form-group col-lg-8">
+              <label for="{{ offer_form.localisation.id }}">{{ offer_form.localisation.label }}*</label>
+              {{ offer_form.localisation }}
+          </div>
+          <div class="form-group col-lg-6" style="margin-right: 1px;">
+              <label for="{{ offer_form.function.id }}">{{ offer_form.function.label }}*</label>
+              {{ offer_form.function }}
+          </div>
+          <div class="form-group col-lg-6" style="margin-left: 2px;">
+              <label for="{{ offer_form.industry.id }}">{{ offer_form.industry.label }}*</label>
+              {{ offer_form.industry }}
+          </div>
+          <div class="form-group col-lg-12">
+              <label for="{{ offer_form.title.id }}">{{ offer_form.title.label }}*</label>
+              {{ offer_form.title }}
+          </div>
+          <div class="form-group col-lg-12">
+              <label for="{{ offer_form.description.id }}">{{ offer_form.description.label }}*</label>
+              {{ offer_form.description }}
+          </div>
+          <div class="form-group col-lg-12">
+            <button type="submit" class="btn btn-default">Publier</button>
+          </div>
       </fieldset>
     </form>
   </div>
@@ -19,15 +41,75 @@
     <p class="text-center">
       <img src="{{ STATIC_URL }}logo_black_border.png" height="70px" class="img-thumbnail"/>
     </p>
+    <br/>
+    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Lorem Ipsum</h4>
     <p>
-      <span class="glyphicon glyphicon-ok"></span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
+    <br/>
+    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Lorem Ipsum</h4>
     <p>
-      <span class="glyphicon glyphicon-ok"></span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
+    <br/>
+    <h4><span class="glyphicon glyphicon-ok"></span>&nbsp;Lorem Ipsum</h4>
     <p>
-      <span class="glyphicon glyphicon-ok"></span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </div>
 </div>
+{% endblock %}
+{% block extra_footer %}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<style>
+    .ui-autocomplete-loading {
+        background: white url('http://jqueryui.com/resources/demos/autocomplete/images/ui-anim_basic_16x16.gif') right center no-repeat;
+    }
+</style>
+<script type="text/javascript">
+
+  $(function() {
+    function log( message ) {
+    }
+
+    $( "#id_localisation" ).autocomplete({
+      source: function( request, response ) {
+        $.ajax({
+          url: "http://ws.geonames.org/searchJSON",
+          dataType: "jsonp",
+          data: {
+            lang: "fr",
+            country: "FR",
+            featureClass: "P",
+            style: "full",
+            maxRows: 12,
+            name_startsWith: request.term
+          },
+          success: function( data ) {
+            response( $.map( data.geonames, function( item ) {
+              console.log(item);
+              return {
+                label: item.name + (item.adminName1 ? ", " + item.adminName1 : ""),
+                value: item.name +  " (" + item.adminCode2 + ")"
+              }
+            }));
+          }
+        });
+      },
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.label :
+          "Nothing selected, input was " + this.value);
+      },
+      open: function() {
+        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+      },
+      close: function() {
+        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+      }
+    });
+  });
+
+</script>
 {% endblock %}
