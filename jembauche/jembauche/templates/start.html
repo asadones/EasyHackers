@@ -3,20 +3,31 @@
 {% block content %}
 <div class="row">
   <div class="col-lg-6 well">
-      <form id="offerForm" method="post">
-        <fieldset>
-          <legend>Je recherche ...</legend>
-          {% for field in form %}
-            <div class="form-group">
-              <label for="{{ field.id }}">{{ field.label }}</label>
-              {{ field }}
-            </div>
-          {% endfor %}
-        </fieldset>
-      </form>
+    <form id="offerForm" method="post">
+      <fieldset>
+        <legend>Je recherche ...</legend>
+        {% for field in form %}
+          <div class="form-group">
+            <label for="{{ field.id }}">{{ field.label }}</label>
+            {{ field }}
+          </div>
+        {% endfor %}
+      </fieldset>
+    </form>
   </div>
   <div class="col-lg-6">
-      Mon marketing
+    <p class="text-center">
+      <img src="{{ STATIC_URL }}logo_black_border.png" height="70px" class="img-thumbnail"/>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-ok"></span>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-ok"></span>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-ok"></span>
+    </p>
   </div>
 </div>
 {% endblock %}
