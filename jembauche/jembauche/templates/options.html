@@ -60,7 +60,7 @@ function updatePrice () {
         price += 99;
     }
     $('#price').text(price);
-    $('#id_price').value(price);
+    $('#id_price').val(price);
 }
 
 function togglePE() {
@@ -201,7 +201,7 @@ function toggleRJobs() {
 {% endblock %}
 {% block extra_footer %}
 <script type="text/javascript">
-{% if options.schools %}$('#schools_bt').click();{%endif %}
-{% if options.pe %}$('#pe_bt').click();{%endif %}
+{% if options.schools %}$('#schools_bt').click();{% endif %}
+{% if options.pe %}$('#pe_bt').click();{% endif %}
 </script>
 {% endblock %}
