@@ -1,3 +1,5 @@
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 from django.views.generic import TemplateView
 
 from datetime import datetime, timedelta
@@ -134,7 +136,25 @@ class EndView(TemplateView):
             job.contact_lastname = self.request.POST.get('contact_lastname')
             job.contact_email = self.request.POST.get('email')
             job.save()
+            if self.request.POST.get('contact1'):
+                self._share()
         else:
             self.template_name = 'finalize.html'
         return self.render_to_response(context)
+
+    def _share(self):
+        context = {
+            'contact_givenname': self.request.POST.get('contact_givenname'),
+            'contact_lastname': self.request.POST.get('contact_lastname'),
+            'code_premium': 'Ar45tyi34r',
+        }
+        text = render_to_string('mail_share.html', context)
+        msg = EmailMessage(
+            'Text Plain TODO',
+            text,
+            'J\'embauche <no-reply@multiposting.fr>',
+            [self.request.POST.get('contact1')],
+        )
+        msg.content_subtype = "html"  # Main content is now text/html
+        msg.send()
 
