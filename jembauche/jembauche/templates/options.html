@@ -188,16 +188,20 @@ function toggleRJobs() {
         <li id="keljob" style="display: none;">Diffusion sur Keljob </li>
         <li id="rjobs" style="display: none;">Diffusion sur R&eacute;gion Jobs</li>
     </ul>
-      <input type="hidden" id="id_schools" name="schools" value="0"/>
-      <input type="hidden" id="id_pe" name="pe" value="0"/>
-      <input type="hidden" id="id_monster" name="monster" value="0"/>
-      <input type="hidden" id="id_keljob" name="keljob" value="0"/>
-      <input type="hidden" id="id_rjobs" name="rjobs" value="0"/>
+    <input type="hidden" id="id_schools" name="schools" value="{% if options.schools %}1{% else %}0{%endif %}"/>
+      <input type="hidden" id="id_pe" name="pe" value="{% if options.pe %}1{% else %}0{%endif %}"/>
+      <input type="hidden" id="id_monster" name="monster" value="{% if options.monster %}1{% else %}0{%endif %}"/>
+      <input type="hidden" id="id_keljob" name="keljob" value="{% if options.keljob %}1{% else %}0{%endif %}"/>
+      <input type="hidden" id="id_rjobs" name="rjobs" value="{% if options.rjobs %}1{% else %}0{%endif %}"/>
       <button type="submit" class="btn btn-default pull-right">Publier</button>
   </div>
 </div>
 {% csrf_token %}
 </form>
 {% endblock %}
-{% block extrafooter %}
+{% block extra_footer %}
+<script type="text/javascript">
+{% if options.schools %}$('#schools_bt').click();{%endif %}
+{% if options.pe %}$('#pe_bt').click();{%endif %}
+</script>
 {% endblock %}

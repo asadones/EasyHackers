@@ -3,12 +3,12 @@
 <div class="row well">
   <div class="col-lg-4">
     <legend>Je recherche ...</legend>
-    <h3 style="color:#ff6508" class="text-center">{{ job.title }}</h3>
+    <h3 style="color:#ff6400" class="text-center">{{ job.title }}</h3>
     <h4 class="text-center">{{ job.contract}}</h4>
     <h4 class="text-center">&Agrave; {{ job.location_city }} ({{ job.location_province}})</h4>
     <br/>
     <legend>Options de diffusion</legend>
-    <h4>Mon annonce pour <span id="price" style="color:#ff6508">{{ price }}</span> €</h4>
+    <h4>Mon annonce pour <span id="price" style="color:#ff6400">{{ price }}</span> €</h4>
     <ul>
         <li>Diffusion standard sur les sites gratuits</li>
         {% if options.schools %}<li id="schools">Diffusion sur les &eacute;coles proches de {{ job.location_city }}</li>{% endif %}
