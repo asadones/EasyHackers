@@ -59,6 +59,11 @@ class OptionsView(TemplateView):
 
             context['job'] = job
 
+            context['options'] = {
+                'schools': True,
+                'pe': True,
+            }
+
         return self.render_to_response(context)
 
 class FinalizeView(TemplateView):
