@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomepageView.as_view(), name='home'),
+    url(r'^contact$', TemplateView.as_view(template_name='contact.html'), name='contact'),
     url(r'^options/$', OptionsView.as_view(), name='options'),
     url(r'^publish/(?P<job_id>\d+)/$', FinalizeView.as_view(), name='finalize'),
     url(r'^view/(?P<job_id>\d+)/$', EndView.as_view(), name='end'),
