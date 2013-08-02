@@ -413,12 +413,12 @@ class ContactForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control input-small'}),
         label=u'Nombre d\'employés',
     )
-    lastname_contact = forms.CharField(
+    contact_lastname = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Nom',
     )
-    givenname_contact = forms.CharField(
+    contact_givenname = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={'class': 'form-control input-small'}),
         label=u'Prénom',

@@ -119,18 +119,22 @@ class EndView(TemplateView):
     template_name = 'end.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(JobView, self).get_context_data()
+        context = super(EndView, self).get_context_data()
         job = Job.objects.get(pk=kwargs['job_id'])
         context['job'] = job
+        context['contact_form'] = ContactForm(self.request.POST)
+        context['show_confirm'] = self.request.method == 'POST'
         return context
 
+    def post(self, *args, **kwargs):
+        context = self.get_context_data(*args, **kwargs)
+        if context['contact_form'].is_valid() and self.request.POST.get('email') == self.request.POST.get('confirm_email'):
+            job = context['job']
+            job.contact_givenname = self.request.POST.get('contact_givenname')
+            job.contact_lastname = self.request.POST.get('contact_lastname')
+            job.contact_email = self.request.POST.get('email')
+            job.save()
+        else:
+            self.template_name = 'finalize.html'
+        return self.render_to_response(context)
 
-class JobView(TemplateView):
-
-    template_name = 'view.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(JobView, self).get_context_data()
-        job = Job.objects.get(pk=kwargs['job_id'])
-        context['job'] = job
-        return context

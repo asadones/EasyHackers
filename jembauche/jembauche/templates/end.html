@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if show_confirm %}
 <div class="container-narrow">
     <div class="col-lg-12 well">
         <h2>Votre offre a bien &eacute;t&eacute; prise en compte !</h2>
         <p>Elles sera diffus&eacute;e sur les sites choisis dans les instants &agrave; venir, et vous allez recevoir une email de confirmation prochainement.</p>
+        <p><a href="https://twitter.com/share" class="twitter-share-button" data-via="sadones">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
     </div>
+</div>
+{% endif %}
+<div class="row-narrow well">
+    <h3>{{ job.title }}</h3>
+    <ul>
+        <li><strong>Entreprise :</strong> {{ job.company }}</li>
+        <li><strong>Type de contrat :</strong> {{ job.contract }}</li>
+        <li><strong>Localisation :</strong> {{ job.location_city }} ({{ job.location_province }})</li>
+        <li><strong>Contact :</strong> {{ job.contact_givenname }} {{ job.contact_lastname }}, <a href="mailto:{{ job.email }}">{{ job.contact_email }}</a></li>
+    </ul>
+    <p>{{ job.description }}</p>
 </div>
 {% endblock %}
