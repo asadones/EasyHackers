@@ -155,7 +155,7 @@ class EndView(TemplateView):
         }
         text = render_to_string('mail_share.html', context)
         msg = EmailMessage(
-            'Text Plain TODO',
+            '%s vous recommande J\'embauche' % self.request.POST.get('contact_givenname'),
             text,
             'J\'embauche <no-reply@multiposting.fr>',
             [self.request.POST.get('contact1')],
